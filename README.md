@@ -1,5 +1,5 @@
 # Microsoft-Engage
-Microsoft Engage 2022 - Facial Recoginition Attendance System with Facial Recognition authentication (log in)
+Microsoft Engage 2022 - Facial Recoginition Attendance System with Facial Recognition authentication (log in) \n
 Link to the site [Face Recognition WebApp](https://sarthak751.github.io/Microsoft-Engage/)
 
 ## Overview
