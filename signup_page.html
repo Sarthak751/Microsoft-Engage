@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<style>
+    body {
+        background-image: url("./images/background2.jpg");
+    }
+</style>
+
+<body>
+    <div class="face-icon">
+        <img src="./images/logo.jpg" class="logo">
+    </div>
+
+    <div class="login-box">
+        <img src="./images/avatar2.jpg" class="avatar">
+        <h1>Registration</h1>
+        <input id="username" type="text" name="username" placeholder="Username" required>
+        <input id="email" type="email" name="email" placeholder="Email" required>
+        <input id="password" type="password" name="password" placeholder="Password" required>
+        </br></br>
+        <input id="add" type="submit" name="add-picture" value="Add Photo" onclick="takePhoto()">
+        <input id="register" type="submit" name="reg-btn" value="Register">
+        <p align="center">Already have an account?</p>
+        </br>
+        <p align="center"><a href="login_page.html">Login here</a></p>
+    </div>
+
+    <div id="photo-box-container" class="photo-box-container">
+        <div id="photo-box" class="photo-box">
+            <video id="videoInput" width="480" height="480" autoplay></video>
+            <canvas id="canvas" width="480" height="480" style="display:none"></canvas>
+        </div>
+        <div class="control-box1">
+            <button id="start-camera" class="controls">Start Camera</button>
+            <button id="click-photo" class="controls">Take Photo</button>
+        </div>
+        <div class="control-box2">
+            <button id="close" class="controls" onclick="closeUpload()">Close</button>
+            <script src="face_upload.js"></script>
+        </div>
+    </div>
+</body>
+<script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+    import { getStorage, ref as sref, uploadString, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-storage.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDeS-Bsx8PrfPIQbq5jK4hgTtNSrCL2mjY",
+        authDomain: "engage-e39e6.firebaseapp.com",
+        projectId: "engage-e39e6",
+        storageBucket: "engage-e39e6.appspot.com",
+        messagingSenderId: "218098839958",
+        appId: "1:218098839958:web:0d93a05cf98b1299656db7",
+        measurementId: "G-GFQTKP0MXS"
+    }; 
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+    const storage = getStorage();
+
+    register.addEventListener('click', (e) => {
+        const username = document.getElementById("username").value
+        const email = document.getElementById("email").value
+        const password = document.getElementById("password").value
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                set(ref(database, 'users/' + user.uid), {
+                    username: username,
+                    email: email
+                });
+                alert("New user created successfully!")
+            }).then(() => {
+                const filename = username //Since the filename is also the username, it needs to be unique for every user
+                const adminImages = sref(storage, 'admins/'+filename);
+                const metadata = {
+                    contentType: 'image/jpeg'
+                }
+                uploadString(adminImages, image_data_url, 'data_url', metadata).then((snapshot) => {
+                alert('Image Uploaded!');
+                getDownloadURL(snapshot.ref).then((downloadURL) => {
+                    console.log(downloadURL)
+                })
+                });
+                
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
+
+    });
+
+</script>
+</html>

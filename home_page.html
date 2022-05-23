@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <link rel="stylesheet" href="home_page.css">
+    </head>
+    <body>
+      <nav class="main-nav">
+        <input type="checkbox" id="check" />
+        <label for="check" class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <a class="logo">FACIAL ATTENDANCE</a>
+        <ul class="navlinks">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#" class="btn">Dark Mode</a></li>
+          <li><a href="login_page.html" class="btn" id="logout" width="">Log out</a></li>
+        </ul>
+      </nav>
+
+      <div class="options">
+        <div class="box">
+          <img src="./images/profile.png" class="avatar">
+          Profile
+        </div>
+        <div class="box">
+          <img src="./images/scan.png" class="avatar">
+          Take Attendance
+        </div>
+        <div class="box">
+          <img src="./images/edit.png" class="avatar">
+          Edit Employees
+        </div>
+        <div class="box">
+          <img src="./images/report.png" class="avatar">
+          View Report
+        </div>
+      </div>
+    </body>
+    <script type="module">
+
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
+      import { getDatabase, update, ref } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDeS-Bsx8PrfPIQbq5jK4hgTtNSrCL2mjY",
+        authDomain: "engage-e39e6.firebaseapp.com",
+        projectId: "engage-e39e6",
+        storageBucket: "engage-e39e6.appspot.com",
+        messagingSenderId: "218098839958",
+        appId: "1:218098839958:web:0d93a05cf98b1299656db7",
+        measurementId: "G-GFQTKP0MXS"
+      };
+      
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+      const auth = getAuth();
+
+      logout.addEventListener('click',(e) => {
+        e.preventDefault();
+        auth.signOut().then(() => {
+          alert("Logged out successfully!");
+          window.location.href = "login_page.html";
+        })
+      });
+
+  </script>
+</html>

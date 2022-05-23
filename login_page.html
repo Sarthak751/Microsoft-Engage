@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="auth.css">
+    </head>
+    <style>
+        body{
+            background-image: url("./images/background1.jpg");
+        }
+    </style>
+    <body>
+        <div class="face-icon">
+            <img src="./images/logo.jpg" class="logo">
+        </div>
+        <div class="login-box" style="height:470px">
+            <img src="./images/avatar1.png" class="avatar">
+            <h1>Admin Login</h1>
+            <input id="email" type="email" name="email" placeholder="Email" required>
+            <input id="password" type="password" name="password" placeholder="Password" required>
+            </br></br>
+            <input id="login" type="submit" name="login-btn" value="Login">
+            <p align="center">Don't have an account?</p>
+            </br>
+            <p align="center"><a href="signup_page.html">Register here</a></p>
+            </br>
+            <input type="submit" name="free-pass" value="Microsoft Pass">
+        </div>
+    </body>
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
+        import { getDatabase, update, ref } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyDeS-Bsx8PrfPIQbq5jK4hgTtNSrCL2mjY",
+          authDomain: "engage-e39e6.firebaseapp.com",
+          projectId: "engage-e39e6",
+          storageBucket: "engage-e39e6.appspot.com",
+          messagingSenderId: "218098839958",
+          appId: "1:218098839958:web:0d93a05cf98b1299656db7",
+          measurementId: "G-GFQTKP0MXS"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth();
+
+        login.addEventListener('click',(e) => {
+
+            const email = document.getElementById("email").value
+            const password = document.getElementById("password").value
+
+            signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                const date = new Date();
+                update(ref(database,'users/' + user.uid),{
+                    last_login: date,
+                });
+                alert("Logged in successfully!");
+                window.location.href = "home_page.html";
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
+        });
+        
+    </script>
+</html>
+    
+    
