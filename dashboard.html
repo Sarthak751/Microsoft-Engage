@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>Dashboard</title>
         <link rel="stylesheet" href="dashboard.css">
     </head>
     <body>
@@ -21,23 +21,67 @@
         </ul>
       </nav>
 
-      <div class="options">
-        <div class="box">
+      <div class="console">
+        <div class="options" onclick="openProfile()">
           <img src="./images/profile.png" class="avatar">
           Profile
         </div>
-        <div class="box">
+        <script>
+          function openProfile() {
+            const profile_page = document.getElementById('profile');
+            profile_page.style.display = "flex";
+          }
+        </script>
+
+        <div class="options" onclick="openAttendance()">
           <img src="./images/scan.png" class="avatar">
           Take Attendance
         </div>
-        <div class="box">
+        <script>
+          function openAttendance() {
+            const attendance_page = document.getElementById('attendance');
+            attendance_page.style.display = "flex";
+          }
+        </script>
+
+        <div class="options" onclick="openEmployeeList()">
           <img src="./images/edit.png" class="avatar">
           Edit Employees
         </div>
-        <div class="box">
+        <script>
+          function openEmployeeList() {
+            const edit_page = document.getElementById('edit');
+            edit_page.style.display = "flex";
+          }
+        </script>
+
+        <div class="options" onclick="openReport()">
           <img src="./images/report.png" class="avatar">
           View Report
         </div>
+        <script>
+          function openReport() {
+            const report_page = document.getElementById('report');
+            report_page.style.display = "flex";
+          }
+        </script>
+      </div>
+
+      <div class="back-btn">
+        Back
+      </div>
+
+      <div id="profile" class="profile-page">
+
+      </div>
+      <div id="attendance" class="attendance-page">
+
+      </div>
+      <div id="edit" class="edit-page">
+
+      </div>
+      <div id="report" class="report-page">
+
       </div>
     </body>
     <script type="module">
@@ -70,5 +114,5 @@
         })
       });
 
-  </script>
+    </script>
 </html>

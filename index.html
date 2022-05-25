@@ -60,11 +60,8 @@
             .then((userCredential) => {
                 const user = userCredential.user;
                 const date = new Date();
-                update(ref(database,'users/' + user.uid),{
-                    last_login: date,
-                });
                 alert("Logged in successfully!");
-                window.location.href = "dashboard.html";
+                window.location.href = "face_login.html";
             })
             .catch((error) => {
                 const errorCode = error.code;

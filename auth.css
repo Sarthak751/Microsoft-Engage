@@ -42,11 +42,12 @@ body{
     position: absolute;
     width: 600px;
     height: 620px;
-    background-color: whitesmoke;
+    background-color: lightcyan;
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 50px;
 }
 .photo-box{
     width: 600px;
