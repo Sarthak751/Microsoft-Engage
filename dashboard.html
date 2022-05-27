@@ -4,92 +4,61 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard</title>
-        <link rel="stylesheet" href="dashboard.css">
+        <link rel="stylesheet" href="/css/dashboard.css">
     </head>
     <body>
-      <nav class="main-nav">
-        <input type="checkbox" id="check" />
-        <label for="check" class="menu-btn">
-          <i class="fas fa-bars"></i>
-        </label>
-        <a class="logo">FACIAL ATTENDANCE</a>
-        <ul class="navlinks">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#" class="btn">Dark Mode</a></li>
-          <li><a href="index.html" class="btn" id="logout" width="">Log out</a></li>
-        </ul>
-      </nav>
+        <nav class="main-nav">
+          <input type="checkbox" id="check" />
+          <label for="check" class="menu-btn">
+            <i class="fas fa-bars"></i>
+          </label>
+          <a class="logo">FACIAL ATTENDANCE</a>
+          <ul class="navlinks">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#" class="btn">Dark Mode</a></li>
+            <li><a href="index.html" class="btn" id="logout" width="">Log out</a></li>
+          </ul>
+        </nav>
 
-      <div class="console">
-        <div class="options" onclick="openProfile()">
-          <img src="./images/profile.png" class="avatar">
-          Profile
+        <div class="console">
+          <div class="options" onclick="openProfile()">
+            <img src="./images/profile.png" class="avatar">
+            Profile
+          </div>
+
+          <div class="options" onclick="openAttendance()">
+            <img src="./images/scan.png" class="avatar">
+            Take Attendance
+          </div>
+
+          <div class="options" onclick="openEmployeeList()">
+            <img src="./images/edit.png" class="avatar">
+            Edit Employees
+          </div>
+
+          <div class="options" onclick="openReport()">
+            <img src="./images/report.png" class="avatar">
+            View Report
+          </div>
         </div>
-        <script>
-          function openProfile() {
-            const profile_page = document.getElementById('profile');
-            profile_page.style.display = "flex";
-          }
-        </script>
+          
+        <div id="profile" class="profile-page"><h1>COMING SOON!</h1></div>
+        
+        <div id="attendance" class="attendance-page"><h1>COMING SOON!</h1></div>
+        
+        <div id="edit" class="edit-page"><h1>COMING SOON!</h1></div>
 
-        <div class="options" onclick="openAttendance()">
-          <img src="./images/scan.png" class="avatar">
-          Take Attendance
-        </div>
-        <script>
-          function openAttendance() {
-            const attendance_page = document.getElementById('attendance');
-            attendance_page.style.display = "flex";
-          }
-        </script>
+        <div id="report" class="report-page"><h1>COMING SOON!</h1></div>
 
-        <div class="options" onclick="openEmployeeList()">
-          <img src="./images/edit.png" class="avatar">
-          Edit Employees
-        </div>
-        <script>
-          function openEmployeeList() {
-            const edit_page = document.getElementById('edit');
-            edit_page.style.display = "flex";
-          }
-        </script>
+        <div id="goBack" class="back-btn" onclick="backToConsole()">Back</div>
 
-        <div class="options" onclick="openReport()">
-          <img src="./images/report.png" class="avatar">
-          View Report
-        </div>
-        <script>
-          function openReport() {
-            const report_page = document.getElementById('report');
-            report_page.style.display = "flex";
-          }
-        </script>
-      </div>
-
-      <div class="back-btn">
-        Back
-      </div>
-
-      <div id="profile" class="profile-page">
-
-      </div>
-      <div id="attendance" class="attendance-page">
-
-      </div>
-      <div id="edit" class="edit-page">
-
-      </div>
-      <div id="report" class="report-page">
-
-      </div>
+        <script src="/js/dashboard_controls.js"></script>
     </body>
     <script type="module">
 
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
-      import { getDatabase, update, ref } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
-      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+      import { getAuth } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
 
       const firebaseConfig = {
         apiKey: "AIzaSyDeS-Bsx8PrfPIQbq5jK4hgTtNSrCL2mjY",
@@ -101,9 +70,7 @@
         measurementId: "G-GFQTKP0MXS"
       };
       
-      // Initialize Firebase
       const app = initializeApp(firebaseConfig);
-      const database = getDatabase(app);
       const auth = getAuth();
 
       logout.addEventListener('click',(e) => {

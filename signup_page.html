@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Register</title>
-        <link rel="stylesheet" href="auth.css">
+        <link rel="stylesheet" href="/css/auth.css">
     </head>
     <style>
         body {
@@ -42,65 +42,9 @@
             </div>
             <div class="control-box2">
                 <button id="close" class="controls" onclick="closeUpload()">Close</button>
-                <script src="face_upload.js"></script>
             </div>
         </div>
+        <script src="/js/face_upload.js"></script>
     </body>
-    <script type="module">
-
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
-        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
-        import { getStorage, ref as sref, uploadString, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-storage.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyDeS-Bsx8PrfPIQbq5jK4hgTtNSrCL2mjY",
-            authDomain: "engage-e39e6.firebaseapp.com",
-            projectId: "engage-e39e6",
-            storageBucket: "engage-e39e6.appspot.com",
-            messagingSenderId: "218098839958",
-            appId: "1:218098839958:web:0d93a05cf98b1299656db7",
-            measurementId: "G-GFQTKP0MXS"
-        }; 
-
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
-        const auth = getAuth();
-        const storage = getStorage();
-
-        register.addEventListener('click', (e) => {
-            const username = document.getElementById("username").value
-            const email = document.getElementById("email").value
-            const password = document.getElementById("password").value
-
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    var imageURL;
-                    const imageName = username 
-                    const adminImages = sref(storage, 'admins/'+imageName);
-                    const metadata = {
-                        contentType: 'image/jpeg'
-                    }
-                    uploadString(adminImages, image_data_url, 'data_url', metadata).then((snapshot) => {
-                        getDownloadURL(snapshot.ref).then((downloadURL) => {
-                            imageURL = downloadURL;
-                            set(ref(database, 'users/' + user.uid), {
-                                username: username,
-                                email: email,
-                                image: imageURL
-                            });
-                        })
-                    })
-                    alert("New user created successfully!");
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    alert(errorMessage);
-                });
-        });
-
-    </script>
+    <script src="/js/signup.js" type="module"></script>
 </html>

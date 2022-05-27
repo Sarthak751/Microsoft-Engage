@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
-        <link rel="stylesheet" href="auth.css">
+        <link rel="stylesheet" href="/css/auth.css">
     </head>
     <style>
         body{
@@ -29,48 +29,7 @@
             <input type="submit" name="free-pass" value="Microsoft Pass">
         </div>
     </body>
-    <script type="module">
-
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
-        import { getDatabase, update, ref } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyDeS-Bsx8PrfPIQbq5jK4hgTtNSrCL2mjY",
-          authDomain: "engage-e39e6.firebaseapp.com",
-          projectId: "engage-e39e6",
-          storageBucket: "engage-e39e6.appspot.com",
-          messagingSenderId: "218098839958",
-          appId: "1:218098839958:web:0d93a05cf98b1299656db7",
-          measurementId: "G-GFQTKP0MXS"
-        };
-        
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
-        const auth = getAuth();
-
-        login.addEventListener('click',(e) => {
-
-            const email = document.getElementById("email").value
-            const password = document.getElementById("password").value
-
-            signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                const date = new Date();
-                alert("Logged in successfully!");
-                window.location.href = "face_login.html";
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(errorMessage);
-            });
-        });
-        
-    </script>
+    <script src="/js/login.js" type="module"></script>
 </html>
     
     
