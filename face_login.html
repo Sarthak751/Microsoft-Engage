@@ -5,9 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Face Login</title>
         <link rel="stylesheet" href="/css/face_login.css">
-        <!-- <script defer src="face-api.min.js"></script>
-        <script defer src="face_recog.js"></script> -->
-        <script src=""></script>
+        <script defer src="face-api.min.js"></script>
+        <script defer src="face_recog.js"></script>
     </head>
     <style>
         body {
@@ -29,47 +28,5 @@
             <input type="submit" id="submit_name" value="Submit" onclick="getImage()">
         </div> -->
     </body>
-    <!-- <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
-        import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-storage.js";
-
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyDeS-Bsx8PrfPIQbq5jK4hgTtNSrCL2mjY",
-          authDomain: "engage-e39e6.firebaseapp.com",
-          projectId: "engage-e39e6",
-          storageBucket: "engage-e39e6.appspot.com",
-          messagingSenderId: "218098839958",
-          appId: "1:218098839958:web:0d93a05cf98b1299656db7",
-          measurementId: "G-GFQTKP0MXS"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth();
-        const storage = getStorage();
-        let blob_image;
-
-        async function getImage() {
-            let username = document.getElementById('inputUserName').value;
-            console.log(username);
-            getDownloadURL(ref(storage, 'admins/'+username))
-            .then((url) => {
-                const xhr = new XMLHttpRequest();
-                xhr.responseType = 'blob';
-                xhr.onload = (event) => {
-                blob_image = xhr.response;
-                };
-                xhr.open('GET', url);
-                xhr.send();
-                alert("Image found in the database! Facial Recognition in process!");
-                console.log(blob_image);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(errorMessage);
-            });
-        }
-    </script> -->
+    <script src="/js/face_fetch.js" type="module"></script>
 </html>
