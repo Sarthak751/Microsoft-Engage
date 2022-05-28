@@ -9,10 +9,18 @@ submit_username.addEventListener('click', (e) => {
     
     const submit_username = document.getElementById("submit_username");
     const inputUserName =  document.getElementById("inputUserName");
-    const imageName = inputUserName.value;
-    inputUserName.style.display = "none";
     submit_username.style.display = "none";
+    inputUserName.style.display = "none";
 
+    const user = auth.currentUser;
+    if (user) {
+      console.log(user.uid);
+      console.log(user.displayName);
+    } else {
+      console.log("Error");
+    }
+
+    const imageName = inputUserName.value;
     getDownloadURL(ref(storage, 'admins/'+imageName))
     .then((url) => {
         startVideo()
@@ -33,7 +41,7 @@ submit_username.addEventListener('click', (e) => {
         })()
     })
     .catch((error) => {
-        alert("Wrong username entered!");
+        alert("Wrong username!");
         location.reload();
     });
 });

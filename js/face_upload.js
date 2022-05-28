@@ -29,7 +29,7 @@ click_photo.addEventListener('click', function () {
 	stream.getTracks().forEach(function (track) {
 		track.stop();
 	});
-	image_data_url = canvas.toDataURL('image/jpeg');
+	imageUpload = canvas.toDataURL('image/jpeg');
 });
 
 

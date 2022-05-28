@@ -11,13 +11,13 @@ register.addEventListener('click', (e) => {
     const password = document.getElementById("password").value
 
     createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(() => {
         const imageName = username;
         const adminImages = sref(storage, 'admins/'+imageName);
         const metadata = {
             contentType: 'image/jpeg'
         }
-        uploadString(adminImages, image_data_url, 'data_url', metadata).then((snapshot) => {
+        uploadString(adminImages, imageUpload, 'data_url', metadata).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((downloadURL) => {
                 updateProfile(auth.currentUser, {
                     displayName: username,
