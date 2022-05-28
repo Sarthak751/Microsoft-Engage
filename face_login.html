@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Face Login</title>
         <link rel="stylesheet" href="/css/face_login.css">
-        <script defer src="face-api.min.js"></script>
-        <script defer src="face_recog.js"></script>
+        <script defer src="/js/face_recog.js"></script>
     </head>
     <style>
         body {
@@ -17,16 +16,30 @@
         }
     </style>   
     <body>
-        <div class="face-icon">
+        <div class="face-icon"> 
             <img src="./images/logo.jpg" class="logo">
         </div>
-        <img id="myImg" style="display:none">
+
+        <img id="fromFirebase" style="display:none">
+        <img id="queryImg1" style="display:none">
+        <img id="queryImg2" style="display:none">
+
         <video id="videoInput" width="640" height="480" autoplay></video>
         <canvas id="canvas" width="640" height="480"></canvas>
-        <!-- <div class="input-box">
-            <input type="text" id="inputUserName" class="inputUserName" placeholder="Username" required>
-            <input type="submit" id="submit_name" value="Submit" onclick="getImage()">
-        </div> -->
+
+        <div class="controls-box">
+            <div class="input-box">
+                <input type="text" id="inputUserName" placeholder="Username" required>
+                <input type="submit" id="submit_username" value="Submit">
+            </div>
+            <div class="click-and-recog-box">
+                <input type="submit" id="logout" value="Log out">
+                <input type="submit" id="click-image" value="Click Photo" onclick="clickPhoto()">
+                <input type="submit" id="recog-btn" value="Recognize" onclick="recognize()">
+            </div>
+        </div>
+
     </body>
     <script src="/js/face_fetch.js" type="module"></script>
+    <script src="/js/logout.js" type="module"></script>
 </html>

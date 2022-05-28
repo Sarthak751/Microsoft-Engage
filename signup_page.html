@@ -20,12 +20,12 @@
         <div class="login-box">
             <img src="./images/avatar2.jpg" class="avatar">
             <h1>Registration</h1>
-            <input id="username" type="text" name="username" placeholder="Username" required>
-            <input id="email" type="email" name="email" placeholder="Email" required>
-            <input id="password" type="password" name="password" placeholder="Password" required>
+            <input id="username" type="text" placeholder="Username" required>
+            <input id="email" type="email" placeholder="Email" required>
+            <input id="password" type="password" placeholder="Password" required>
             </br></br>
-            <input id="add" type="submit" name="add-picture" value="Add Photo" onclick="takePhoto()">
-            <input id="register" type="submit" name="reg-btn" value="Register">
+            <input id="add" type="submit" value="Add Photo" onclick="AddPhoto()">
+            <input id="register" type="submit" value="Register">
             <p align="center">Already have an account?</p>
             </br>
             <p align="center"><a href="index.html">Login here</a></p>
@@ -33,15 +33,15 @@
 
         <div id="photo-box-container" class="photo-box-container">
             <div id="photo-box" class="photo-box">
-                <video id="videoInput" width="480" height="480" autoplay></video>
-                <canvas id="canvas" width="480" height="480" style="display:none"></canvas>
+                <video id="videoInput" width="640" height="480" autoplay></video>
+                <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
             </div>
             <div class="control-box1">
                 <button id="start-camera" class="controls">Start Camera</button>
                 <button id="click-photo" class="controls">Take Photo</button>
             </div>
             <div class="control-box2">
-                <button id="close" class="controls" onclick="closeUpload()">Close</button>
+                <button id="close" class="controls" onclick="closePhotoBox()">Close</button>
             </div>
         </div>
         <script src="/js/face_upload.js"></script>
