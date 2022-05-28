@@ -17,7 +17,6 @@ function clickPhoto() {
     const queryImg2 = document.getElementById('queryImg2');
     queryImg2.title = canvas.toDataURL('image/jpeg');
     queryImg2.title = queryImg2.title.substring(23);
-    console.log(queryImg2.title);
     const recog_btn = document.getElementById('recog-btn');
     recog_btn.style.display = 'flex';
 }
@@ -39,18 +38,17 @@ async function recognize() {
     .then(res => {
         return res.json()
     }).then(data => {
-            if (data.matchedFaces.length == 0)
-                alert("NO FACE DETECTED! TRY AGAIN!");
-            else if (data.matchedFaces.length != 0 && data.matchedFaces[0].confidence < 90)
+            if (data.matchedFaces.length != 0 && data.matchedFaces[0].confidence < 90) {
                 alert("FACE NOT MATCHING! TRY AGAIN!");
+                location.reload();
+            }
             else {
-                alert("FACE MATCHED! WELCOME TO THE DASHBOARD!")
+                alert("Face Matched! WELCOME to the Dashboard!")
                 window.location.href = "dashboard.html";
             }
         })
     .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
+        alert("NO face detected! TRY AGAIN!");
+        location.reload();
     });
 }

@@ -20,21 +20,19 @@ submit_username.addEventListener('click', (e) => {
         fromFirebase.setAttribute('src', url);
         const imageUrl = fromFirebase.src;
         (async () => {
-        const response = await fetch(imageUrl)
-        const imageBlob = await response.blob()
-        const reader = new FileReader();
-        reader.readAsDataURL(imageBlob);
-        reader.onloadend = () => {
-            const queryImg1 = document.getElementById('queryImg1');
-            queryImg1.title = reader.result.substring(23);
-            console.log(queryImg1.title);
-            const click_image = document.getElementById('click-image');
-            click_image.style.display = 'flex';
-        }
+            const response = await fetch(imageUrl)
+            const imageBlob = await response.blob()
+            const reader = new FileReader();
+            reader.readAsDataURL(imageBlob);
+            reader.onloadend = () => {
+                const queryImg1 = document.getElementById('queryImg1');
+                queryImg1.title = reader.result.substring(23);
+                const click_image = document.getElementById('click-image');
+                click_image.style.display = 'flex';
+            }
         })()
     })
     .catch((error) => {
-        const errorCode = error.code;
         alert("Wrong username entered!");
         location.reload();
     });
