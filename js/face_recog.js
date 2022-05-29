@@ -15,6 +15,8 @@ async function startVideo() {
 function clickPhoto() {
     click_image.style.display = "none";
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    //stops the webcam
     stream.getTracks().forEach(function (track) {
         track.stop();
     });
