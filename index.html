@@ -28,10 +28,14 @@
             <!--If one does not have an account, they can head to the sign up page-->
             <p align="center"><a href="signup_page.html">Register here</a></p>
             </br>
-            <input type="submit" name="free-pass" value="Microsoft Pass">
+            <input type="submit" name="free-pass" value="Microsoft Pass" onclick="toDashboard()">
+            <script>
+                function toDashboard(){
+                    window.location.href = "dashboard.html";
+                }
+            </script>
         </div>
     </body>
     <script src="js/login.js" type="module"></script>
 </html>
-    
     
