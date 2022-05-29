@@ -10,28 +10,35 @@ register.addEventListener('click', (e) => {
     const username = document.getElementById("username").value
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
+    const flag_image = document.getElementById('canvas_check')
 
-    createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-        const imageName = username;
-        const adminImages = sref(storage, 'admins/'+imageName);
-        const metadata = {
-            contentType: 'image/jpeg'
-        }
-        //this bit of code down below uploads the clicked photo to firebase storage
-        uploadString(adminImages, imageUpload, 'data_url', metadata)
-        .then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((downloadURL) => {
-                updateProfile(auth.currentUser, {
-                    displayName: username,
-                    photoURL: downloadURL 
+    if (flag_image.drawn == true)
+    {
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+            const imageName = username;
+            const adminImages = sref(storage, 'admins/'+imageName);
+            const metadata = {
+                contentType: 'image/jpeg'
+            }
+            //this bit of code down below uploads the clicked photo to firebase storage
+            uploadString(adminImages, imageUpload, 'data_url', metadata)
+            .then((snapshot) => {
+                getDownloadURL(snapshot.ref).then((downloadURL) => {
+                    updateProfile(auth.currentUser, {
+                        displayName: username,
+                        photoURL: downloadURL 
+                    });
                 });
             });
-        });
-    alert("New user created successfully!");
-    })
-    .catch((error) => {
-        const errorMessage = error.message;
-        alert(errorMessage);
-    });
-});
+            alert("New user created successfully!");
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            alert(errorMessage);
+        })
+    }
+    else {
+        alert("Please upload an image!");
+    }
+})

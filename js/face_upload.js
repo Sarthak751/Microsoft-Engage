@@ -36,6 +36,8 @@ click_photo.addEventListener('click', function () {
 	});
 	//the image clicked is converted into base64 encoded string and stored in 'imageUpload'
 	imageUpload = canvas.toDataURL('image/jpeg');
+	flag_image = document.getElementById('canvas_check');
+	flag_image.drawn = true;
 });
 
 
