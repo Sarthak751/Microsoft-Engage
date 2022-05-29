@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard</title>
-        <link rel="stylesheet" href="/css/dashboard.css">
+        <link rel="stylesheet" href="css/dashboard.css">
     </head>
     <body>
         <!--navigation bar-->
@@ -15,48 +15,66 @@
           </label>
           <a class="logo">FACIAL ATTENDANCE</a>
           <ul class="navlinks">
-            <li><a href="#">About</a></li>
+            <li><a href="https://in.linkedin.com/in/sarthak-krishna-040672192?trk=people-guest_people_search-card" target="_blank">About</a></li>
             <li><a href="#">Contact</a></li>
-            <!--firebase logout-->
-            <li><a href="index.html" class="btn" id="logout" width="">Log out</a></li>
+            <li><a href="index.html" class="btn" id="logout" width="">Log out</a></li> <!--firebase logout-->
           </ul>
         </nav>
         <!--the console that hosts all the admin options and features-->
         <div class="console">
-          <div class="options" onclick="openProfile()">
-            <img src="./images/profile.png" class="avatar">
-            Profile
+          <div class="row1">
+            <div class="options" onclick="openProfile()">
+              <img src="images/profile.png" class="avatar">
+              Profile
+            </div>
+            <div class="options" onclick="takeAttendance()">
+              <img src="images/scan.png" class="avatar">
+              Take Attendance
+            </div>
+            <div class="options" onclick="addNewStudent()">
+              <img src="images/add_stud.png" class="avatar">
+              Add Students
+            </div>
           </div>
-          
-          <div class="options" onclick="openAttendance()">
-            <img src="./images/scan.png" class="avatar">
-            Take Attendance
-          </div>
-          
-          <div class="options" onclick="openEmployeeList()">
-            <img src="./images/edit.png" class="avatar">
-            Edit Employees
-          </div>
-          
-          <div class="options" onclick="openReport()">
-            <img src="./images/report.png" class="avatar">
-            View Report
+          <div class="row2">
+            <div class="options" onclick="editStudent()">
+              <img src="images/edit.png" class="avatar">
+              Edit Students 
+            </div>
+            <div class="options" onclick="addNewCourse()">
+              <img src="images/add_course.png" class="avatar">
+              Add Course
+            </div>
+            <div class="options" onclick="viewReport()">
+              <img src="images/report.png" class="avatar">
+              View Reports
+            </div>
           </div>
         </div>
-
         <!--overlay pages-->
         <div id="profile" class="profile-page"><h1>COMING SOON!</h1></div>
 
         <div id="attendance" class="attendance-page"><h1>COMING SOON!</h1></div>
 
+        <div id="add_stud" class="stud-add-page"><h1>COMING SOON!</h1></div>
+
         <div id="edit" class="edit-page"><h1>COMING SOON!</h1></div>
+
+        <div id="add_course" class="course-add-page">
+          <h2>Course Addition Page</h2>
+          <div class="new-course">
+            <input type="text" id="course_name" value="Enter course">
+            <input type="submit" id="add-course-btn" value="Add" onclick="addCourse()">
+          </div>
+        </div>
 
         <div id="report" class="report-page"><h1>COMING SOON!</h1></div>
 
         <!--back button: to return to the main console from the overlay pages-->
         <div id="goBack" class="back-btn" onclick="backToConsole()">Back</div>
 
-        <script src="/js/dashboard_controls.js"></script>
+        <script src="js/dashboard_controls.js"></script>
+        <script src="js/attendace.js"></script>
     </body>
-    <script src="/js/logout.js" type="module"></script>
+    <script src="js/logout.js" type="module"></script>
 </html>
