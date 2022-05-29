@@ -15,16 +15,15 @@ I can't deny that I used the most traditional way of doing things but it did tur
 * MXFace API (Kudos to these guys for such a nice and sweet documentation)
 
 ## 3-step authentication
-In very simple terms, this is how the application flows: 
+In very simple terms, this is how the authentication procedure flows: 
 
 1. Email and Password login
 2. Username login
 3. Face login
 
 ## Requirements
-This project is just a collection of web pages built using the good old combination of html, css and javascript. All you need to do is clone the repo and run the project. As
-easy as that.
-
+* I have configured CORS in such a way that XMLHttpRequests from local hosts can fetch items on firebase storage, so there should not be any CORS related problems running from a local host. 
+* This project is just a collection of web pages built using the good old combination of html, css and javascript. All one needs to do is clone the repo and run the project by opening index.html. As easy as that!
 
 ## File Structuring
 
@@ -38,5 +37,19 @@ the file structure. Some people could have a hard time figuring out what files a
 I have also made a nice hand-drawn user flowchart which does make things a little simple to understand.
 
 ![Flowchart](/images/flowchart.jpg)
+
+## User Registration
+
+User registration requires one to enter their username, email, password and an image. The username NEEDS to be UNIQUE! The image gets stored on the firebase storage having the same filename as the username. This logic shapes the third step of our authentication process.
+
+## Face fetch during face login
+
+During this step, one clicks their realtime picture. This image, along with the image corresponding to their account on firebase (in the storage) are fed to MXFace API which compares the two pictures, matches the faces, and returns a response. On a positive response, one finally gets access to the dashboard. 
+
+## Firebase services
+
+Login, registration, image storage and the logout operation are all firebase services which I have integrated in my project. I have provided the logout option both in the dashboard as well as during the face login in case someone gets stuck.
+
+
 
 
