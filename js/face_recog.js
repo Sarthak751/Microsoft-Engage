@@ -60,7 +60,7 @@ async function recognize() {
         return res.json()
     }).then(data => {
             if (data.matchedFaces.length != 0 && data.matchedFaces[0].confidence < 90) {
-                alert("FACE NOT MATCHING! TRY AGAIN!");
+                alert("Face not matching! TRY AGAIN!");
                 location.reload();
             }
             else {
@@ -69,7 +69,7 @@ async function recognize() {
             }
         })
     .catch((error) => {
-        alert("NO face detected! TRY AGAIN!");
+        alert("No face detected! TRY AGAIN!");
         location.reload();
     });
 }
