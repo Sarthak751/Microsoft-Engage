@@ -1,6 +1,6 @@
 # Microsoft-Engage
 Microsoft Engage 2022 - Three-step super secure authentication system       
-Link to the application: [Face Recognition WebApp](https://sarthak751.github.io/Microsoft-Engage/)
+Link to the application: [Face Recognition WebApp](https://sarthak751.github.io/My-Project/)
 
 ## Overview
 I made this application as a part of Microsoft Engage Intern 2022 Program. It is an attendance system using facial recognition technology. The X-factor about this project is the fact that there are actually two places where facial recognition has been used:
