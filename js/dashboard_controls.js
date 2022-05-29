@@ -1,3 +1,5 @@
+/*This bit of code handles all the overlay pages when the user 
+clicks on any of the available options*/
 const profile_page = document.getElementById('profile');
 const attendance_page = document.getElementById('attendance');
 const edit_page = document.getElementById('edit');

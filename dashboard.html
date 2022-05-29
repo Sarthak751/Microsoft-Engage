@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="/css/dashboard.css">
     </head>
     <body>
+        <!--navigation bar-->
         <nav class="main-nav">
           <input type="checkbox" id="check" />
           <label for="check" class="menu-btn">
@@ -16,40 +17,43 @@
           <ul class="navlinks">
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
+            <!--firebase logout-->
             <li><a href="index.html" class="btn" id="logout" width="">Log out</a></li>
           </ul>
         </nav>
-
+        <!--the console that hosts all the admin options and features-->
         <div class="console">
           <div class="options" onclick="openProfile()">
             <img src="./images/profile.png" class="avatar">
             Profile
           </div>
-
+          
           <div class="options" onclick="openAttendance()">
             <img src="./images/scan.png" class="avatar">
             Take Attendance
           </div>
-
+          
           <div class="options" onclick="openEmployeeList()">
             <img src="./images/edit.png" class="avatar">
             Edit Employees
           </div>
-
+          
           <div class="options" onclick="openReport()">
             <img src="./images/report.png" class="avatar">
             View Report
           </div>
         </div>
-          
+
+        <!--overlay pages-->
         <div id="profile" class="profile-page"><h1>COMING SOON!</h1></div>
-        
+
         <div id="attendance" class="attendance-page"><h1>COMING SOON!</h1></div>
-        
+
         <div id="edit" class="edit-page"><h1>COMING SOON!</h1></div>
 
         <div id="report" class="report-page"><h1>COMING SOON!</h1></div>
 
+        <!--back button: to return to the main console from the overlay pages-->
         <div id="goBack" class="back-btn" onclick="backToConsole()">Back</div>
 
         <script src="/js/dashboard_controls.js"></script>

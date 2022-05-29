@@ -5,6 +5,7 @@ import { getStorage, ref as sref, uploadString, getDownloadURL } from "https://w
 const auth = getAuth();
 const storage = getStorage();
 
+//this firebase code handles the registration of new users
 register.addEventListener('click', (e) => {
     const username = document.getElementById("username").value
     const email = document.getElementById("email").value
@@ -17,7 +18,9 @@ register.addEventListener('click', (e) => {
         const metadata = {
             contentType: 'image/jpeg'
         }
-        uploadString(adminImages, imageUpload, 'data_url', metadata).then((snapshot) => {
+        //this bit of code down below uploads the clicked photo to firebase storage
+        uploadString(adminImages, imageUpload, 'data_url', metadata)
+        .then((snapshot) => {
             getDownloadURL(snapshot.ref).then((downloadURL) => {
                 updateProfile(auth.currentUser, {
                     displayName: username,

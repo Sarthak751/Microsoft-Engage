@@ -16,8 +16,8 @@
         <div class="face-icon">
             <img src="./images/logo.jpg" class="logo">
         </div>
-
-        <div class="login-box">
+        <!--input-box is where user the inputs their username, email and password and also gives their picture-->
+        <div class="input-box">
             <img src="./images/avatar2.jpg" class="avatar">
             <h1>Registration</h1>
             <input id="username" type="text" placeholder="Username" required>
@@ -30,12 +30,13 @@
             </br>
             <p align="center"><a href="index.html">Login here</a></p>
         </div>
-
+        <!--this container contains the webcam element-->
         <div id="photo-box-container" class="photo-box-container">
             <div id="photo-box" class="photo-box">
                 <video id="videoInput" width="640" height="480" autoplay></video>
                 <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
             </div>
+            <!--these are the controls to start the webcam, take picture, and upload it-->
             <div class="control-box1">
                 <button id="start-camera" class="controls">Start WebCam</button>
                 <button id="click-photo" class="controls">Capture</button>

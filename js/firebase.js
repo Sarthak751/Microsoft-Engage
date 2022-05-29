@@ -1,3 +1,5 @@
+//this is the firebase config file
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
 
 const firebaseConfig = {
@@ -12,4 +14,5 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 
+//this file is imported in all files where firebase services are used
 export default firebaseApp;
