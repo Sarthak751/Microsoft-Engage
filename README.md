@@ -5,6 +5,12 @@ Hosted on github: [Face Recognition WebApp](https://sarthak751.github.io/My-Proj
 ## Overview
 I made this application as a part of Microsoft Engage Intern 2022 program. I originally wanted to make an attendance monitoring system using facial recognition **in addition to** the facial recognition authentication system, but due to time constraints I had to work solely on the authentication system. But hey, I just improved it to the next level! Check out the content below for more information about the system. 
 
+
+## Requirements
+* I have configured CORS in such a way that XMLHttpRequests from local hosts can fetch items from firebase storage, so there should not be any CORS related problems running from a local host. 
+* This project is just a collection of web pages built using the good old combination of html, css and javascript. All one needs to do is clone the repo and run the project by opening index.html. As easy as that!
+* MXFace allows only 250 API calls per day. Please be mindful of the limit.
+
 ## Tech Stack
 I can't deny that I used the most traditional way of doing things but it did turn out quite well. I used:
 
@@ -13,10 +19,6 @@ I can't deny that I used the most traditional way of doing things but it did tur
 * Javascript
 * Google Firebase (Authentication and Storage)
 * MXFace API (Kudos to these guys for such a nice and sweet documentation)
-
-## Requirements
-* I have configured CORS in such a way that XMLHttpRequests from local hosts can fetch items from firebase storage, so there should not be any CORS related problems running from a local host. 
-* This project is just a collection of web pages built using the good old combination of html, css and javascript. All one needs to do is clone the repo and run the project by opening index.html. As easy as that!
 
 ## 3-step Authentication
 In very simple terms, this is how the authentication procedure flows: 
